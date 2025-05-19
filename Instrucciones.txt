@@ -1,0 +1,10 @@
+Primero ejecutamos el script para crear la base de datos
+Dentro de la conexión a la base de datos de mi parte el usuario 
+es root y la contraseña es 12345678 asi que 
+considerar las medidas necesarias, perdon :(
+Lo mismo para el usuario admin, como usa hash para las contraseñas 
+pues no va a servir el ususario que fue agregado, lo que recomendaria hacer
+es crear un usuario normal desde la parte de la pagina y copiar la contraseña que se genera
+para usarla en el usuario main, otra disculpa de antemano 
+son cosas de las que no piensas hasta que tienes que compartir el proyecto xd, espero que no 
+le cause muchos inconvenientes:(
