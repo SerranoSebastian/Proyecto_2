@@ -1,0 +1,52 @@
+CREATE DATABASE tienda_db;
+USE tienda_db;
+
+CREATE TABLE usuarios (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    correo VARCHAR(100) NOT NULL UNIQUE,
+    contrasena VARCHAR(255) NOT NULL,
+    rol ENUM('cliente', 'admin') DEFAULT 'cliente',
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE productos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion TEXT,
+    precio DECIMAL(10,2) NOT NULL,
+    stock INT DEFAULT 0,
+    creado_en TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_usuario INT NOT NULL,
+    fecha TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    total DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_usuario) REFERENCES usuarios(id)
+);
+
+CREATE TABLE detalles_pedido (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_pedido INT NOT NULL,
+    id_producto INT NOT NULL,
+    cantidad INT NOT NULL,
+    precio_unitario DECIMAL(10,2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id),
+    FOREIGN KEY (id_producto) REFERENCES productos(id)
+);
+
+INSERT INTO productos (nombre, descripcion, precio, stock) VALUES
+('Laptop Gamer Thunderobot 911MT', 'Laptop gamer con Intel i7, RTX 4060 y pantalla 144Hz', 23999.99, 10),
+('Mouse Gamer RGB', 'Mouse ergonómico con iluminación LED y 6 botones programables', 599.00, 25),
+('Teclado Mecánico', 'Teclado con switches rojos y retroiluminación RGB', 999.00, 15),
+('Monitor 24" 144Hz', 'Monitor Full HD con tasa de refresco de 144Hz', 3499.00, 8);
+
+INSERT INTO usuarios (nombre, correo, contrasena, rol)
+VALUES (
+    'Administrador',
+    'admin@tienda.com',
+    '$2y$10$LVwdt.a6fMfYen5oeOGUi.s5XG/Nk/md5ji0BkiddVmhD3pCVwfXa',
+    'admin'
+);
