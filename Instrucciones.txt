@@ -1,2 +1,2 @@
 Primero ejecutamos el script para crear la base de datos
-Dentro de la conexión a la base de datos de mi parte el usuario es root y la contraseña es 12345678 asi que considerar las medidas necesarias, perdon :(
+Dentro de la conexión a la base de datos de mi parte el usuario es root y la contraseña es 12345678 asi que considerar las medidas necesarias, perdon :( esto se modifica en api/config/bd.php
